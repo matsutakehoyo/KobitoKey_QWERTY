@@ -67,13 +67,13 @@
 
         combo_eisu {
             timeout-ms = <50>;
-            key-positions = <12 13>;
+            key-positions = <2 3>;
             bindings = <&kp LANG2>;
         };
 
         combo_kana {
             timeout-ms = <50>;
-            key-positions = <16 17>;
+            key-positions = <6 7>;
             bindings = <&kp LANG1>;
         };
 
