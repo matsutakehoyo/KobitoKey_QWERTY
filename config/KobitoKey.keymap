@@ -1,5 +1,6 @@
 #include <input/processors.dtsi>
 #include <behaviors.dtsi>
+#include <behaviors/naginata.dtsi>
 #include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/pointing.h>
@@ -16,8 +17,22 @@
         compatible = "zmk,conditional-layers";
 
         lower_raise_function {
-            if-layers = <1 2>;
-            then-layer = <4>;
+            if-layers = <2 4>;
+            then-layer = <5>;
+        };
+    };
+
+    macros {
+        ng_on: ng_on {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&macro_tap &kp LANG1 &kp INTERNATIONAL_4 &to 1>;
+        };
+
+        ng_off: ng_off {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&macro_tap &kp LANG2 &kp INTERNATIONAL_5 &to 0>;
         };
     };
 
@@ -73,6 +88,20 @@
             key-positions = <10 11>;
             bindings = <&kp TAB>;
         };
+
+        combo_ng_on {
+            timeout-ms = <300>;
+            key-positions = <26 27>;
+            bindings = <&ng_on>;
+            layers = <0>;
+        };
+
+        combo_ng_off {
+            timeout-ms = <300>;
+            key-positions = <22 23>;
+            bindings = <&ng_off>;
+            layers = <1>;
+        };
     };
 
     keymap {
@@ -83,11 +112,21 @@
 &kp Q      &kp W     &kp E     &kp R        &kp T      &kp Y     &kp U        &kp I      &kp O      &kp P
 &hml LSHFT A      &hml LCTRL S     &hml LALT D     &hml LCMD F        &kp G      &kp H     &hmr RCMD J        &hmr RALT K      &hmr RCTRL L      &hmr RSHFT SEMI
 &kp Z      &kp X     &kp C     &kp V        &kp B      &kp N     &kp M        &kp COMMA  &kp DOT    &kp SLASH
-&kp LANG2  &kp LALT  &kp LSHFT  &lt 1 ENTER  &kp TAB  &kp BSPC  &lt 2 SPACE  &kp RSHFT  &kp RALT  &kp LANG1
+&kp LANG2  &kp LALT  &kp LSHFT  &lt 2 ENTER  &kp TAB  &kp BSPC  &lt 4 SPACE  &kp RSHFT  &kp RALT  &kp LANG1
             >;
         };
 
-        layer1 {
+        naginata_layer {
+            label = "NAGINATA";
+            bindings = <
+&ng Q      &ng W     &ng E     &ng R        &ng T      &ng Y     &ng U        &ng I      &ng O      &ng P
+&ng A      &ng S     &ng D     &ng F        &ng G      &ng H     &ng J        &ng K      &ng L      &ng SEMI
+&ng Z      &ng X     &ng C     &ng V        &ng B      &ng N     &ng M        &ng COMMA  &ng DOT    &ng SLASH
+&kp LANG2  &kp LALT  &kp LSHFT  &lt 2 ENTER  &kp TAB  &kp BSPC  &lt 4 SPACE  &kp RSHFT  &kp RALT  &kp LANG1
+            >;
+        };
+
+        lower_layer {
             label = "LOWER";
             bindings = <
 &kp ESC    &kp N4  &kp N5  &kp N6  &kp DEL    &kp ASTRK  &none     &kp LPAR  &kp RPAR  &kp GRAVE
@@ -97,17 +136,7 @@
             >;
         };
 
-        layer2 {
-            label = "RAISE";
-            bindings = <
-&kp TAB       &kp DLLR  &kp PRCNT  &kp CARET  &kp COLON    &none      &kp HOME   &kp PG_DN  &kp PG_UP  &kp END
-&none         &kp EXCL  &kp AT     &kp HASH   &kp SEMI     &kp ESC    &kp LEFT   &kp DOWN   &kp UP     &kp RIGHT
-&kp LA(ASTRK) &kp AMPS  &kp ASTRK  &kp TILDE  &kp LA(N8)   &kp UNDER  &kp MINUS  &kp PLUS   &kp EQUAL  &kp BSLH
-&trans        &trans    &trans     &trans     &trans       &trans     &trans     &trans     &trans     &trans
-            >;
-        };
-
-        layer3 {
+        mouse_layer {
             label = "MOUSE";
             bindings = <
 &trans     &trans  &trans    &trans    &trans  &trans  &mkp MB1  &mkp MB3  &mkp MB2  &trans
@@ -117,7 +146,17 @@
             >;
         };
 
-        layer4 {
+        raise_layer {
+            label = "RAISE";
+            bindings = <
+&kp TAB       &kp DLLR  &kp PRCNT  &kp CARET  &kp COLON    &none      &kp HOME   &kp PG_DN  &kp PG_UP  &kp END
+&none         &kp EXCL  &kp AT     &kp HASH   &kp SEMI     &kp ESC    &kp LEFT   &kp DOWN   &kp UP     &kp RIGHT
+&kp LA(ASTRK) &kp AMPS  &kp ASTRK  &kp TILDE  &kp LA(N8)   &kp UNDER  &kp MINUS  &kp PLUS   &kp EQUAL  &kp BSLH
+&trans        &trans    &trans     &trans     &trans       &trans     &trans     &trans     &trans     &trans
+            >;
+        };
+
+        function_layer {
             label = "FUNCTION";
             bindings = <
 &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4    &none    &kp F10  &kp F11  &kp F12  &kp F6

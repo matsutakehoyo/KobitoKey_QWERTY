@@ -2,6 +2,8 @@ manifest:
   remotes:
     - name: zmkfirmware
       url-base: https://github.com/zmkfirmware
+    - name: eswai
+      url-base: https://github.com/eswai
     - name: badjeff
       url-base: https://github.com/badjeff
     - name: hsgw
@@ -22,6 +24,11 @@ manifest:
       revision: zmk-0.3
       # 置き場所を明示したい場合は path を指定（任意）
       # path: modules/zmk-pmw3610-driver
+
+    # 薙刀式かな入力
+    - name: zmk-naginata
+      remote: eswai
+      revision: main
     
     # Sensor-rotation
     - name: zmk-feature-sensor_rotation
