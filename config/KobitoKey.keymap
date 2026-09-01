@@ -132,7 +132,7 @@
 &trans     &trans  &trans    &trans    &trans  &trans  &mkp MB1  &mkp MB3  &mkp MB2  &trans
 &hml LSHFT A  &hml LCTRL S  &hml LALT D  &hml LCMD F  &kp G  &trans  &trans    &trans    &trans    &trans
 &trans     &trans  &trans    &trans    &trans  &trans  &trans    &trans    &trans    &trans
-&kp LSHFT  &trans  &kp LCMD  &kp LALT  &to 0   &trans  &trans    &trans    &to 0     &kp RALT
+&trans     &trans  &trans    &trans    &trans  &trans  &trans    &trans    &trans    &trans
             >;
         };
 
