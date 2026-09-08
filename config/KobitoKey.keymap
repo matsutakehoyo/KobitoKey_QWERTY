@@ -71,26 +71,28 @@
             timeout-ms = <50>;
             key-positions = <0 1>;
             bindings = <&kp ESC>;
+            layers = <0 2 3 4 5 6>;
         };
 
         combo_tab {
             timeout-ms = <50>;
             key-positions = <10 11>;
             bindings = <&kp TAB>;
+            layers = <0 2 3 4 5 6>;
         };
 
         combo_ng_on {
-            timeout-ms = <300>;
-            key-positions = <26 27>;
+            timeout-ms = <150>;
+            key-positions = <15 16>;
             bindings = <&ng_on>;
             layers = <0>;
         };
 
         combo_ng_off {
-            timeout-ms = <300>;
-            key-positions = <22 23>;
+            timeout-ms = <150>;
+            key-positions = <13 14>;
             bindings = <&ng_off>;
-            layers = <1>;
+            layers = <0 1>;
         };
     };
 
@@ -102,7 +104,7 @@
 &kp Q      &kp W     &kp E     &kp R        &kp T      &kp Y     &kp U        &kp I      &kp O      &kp P
 &hml LSHFT A      &hml LCTRL S     &hml LALT D     &hml LCMD F        &kp G      &kp H     &hmr RCMD J        &hmr LALT K      &hmr RCTRL L      &hmr RSHFT SEMI
 &kp Z      &kp X     &kp C     &kp V        &kp B      &kp N     &kp M        &kp COMMA  &kp DOT    &kp SLASH
-&kp LANG2  &kp LALT  &kp LSHFT  &lt 2 ENTER  &lt 6 TAB  &kp BSPC  &lt 4 SPACE  &kp RSHFT  &kp RALT  &kp LANG1
+&kp LANG2  &kp LALT  &kp LSHFT  &lt 2 ENTER  &lt 6 TAB  &kp BSPC  &lt 4 SPACE  &kp RSHFT  &kp RALT  &ng_on
             >;
         };
 
@@ -112,7 +114,7 @@
 &ng Q      &ng W     &ng E     &ng R        &ng T      &ng Y     &ng U        &ng I      &ng O      &ng P
 &ng A      &ng S     &ng D     &ng F        &ng G      &ng H     &ng J        &ng K      &ng L      &ng SEMI
 &ng Z      &ng X     &ng C     &ng V        &ng B      &ng N     &ng M        &ng COMMA  &ng DOT    &ng SLASH
-&kp LANG2  &kp LALT  &lt 2 LSHFT  &ng ENTER  &lt 6 TAB  &kp BSPC  &ng SPACE  &lt 4 RSHFT  &kp RALT  &kp LANG1
+&ng_off    &kp LALT  &lt 2 LSHFT  &ng ENTER  &lt 6 TAB  &kp BSPC  &ng SPACE  &lt 4 RSHFT  &kp RALT  &kp LANG1
             >;
         };
 
