@@ -4,6 +4,8 @@ manifest:
       url-base: https://github.com/zmkfirmware
     - name: eswai
       url-base: https://github.com/eswai
+    - name: matsutakehoyo
+      url-base: https://github.com/matsutakehoyo
     - name: badjeff
       url-base: https://github.com/badjeff
     - name: hsgw
@@ -25,9 +27,9 @@ manifest:
       # 置き場所を明示したい場合は path を指定（任意）
       # path: modules/zmk-pmw3610-driver
 
-    # 薙刀式かな入力
+    # 薙刀式かな入力 (fork: M+,/C+V on/off + layer switching, QMK風)
     - name: zmk-naginata
-      remote: eswai
+      remote: matsutakehoyo
       revision: main
     
     # Sensor-rotation
