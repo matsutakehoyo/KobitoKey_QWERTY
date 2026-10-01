@@ -23,7 +23,7 @@ maintained as comments inside [`config/KobitoKey.keymap`](config/KobitoKey.keyma
 
 Kana input uses my fork of eswai's module:
 [matsutakehoyo/zmk-naginata](https://github.com/matsutakehoyo/zmk-naginata)
-(pinned in [`config/west.yml`](config/west.yml)). The fork makes two changes
+(pinned in [`config/west.yml`](config/west.yml)). The fork makes three changes
 to match my QMK Arasaa setup (`naginata_v15.c`):
 
 - **On/off gestures are engine dictionary entries, not ZMK combos**:
@@ -33,6 +33,11 @@ to match my QMK Arasaa setup (`naginata_v15.c`):
 - **`naginata_on()/naginata_off()` switch the ZMK layer themselves**
   (`CONFIG_NAGINATA_LAYER`, default 1), so the IME state and the layer can
   never desync.
+- **Modifier passthrough** (QMK `process_modifier` equivalent): while a
+  modifier is held, `&ng` keys skip kana conversion and send raw keycodes.
+  The naginata layer's outer thumbs are plain Shift (they replaced Alt), so
+  holding one types roman capitals mid-kana, and ⌘/⌃/⌥ shortcuts work without
+  leaving kana mode.
 
 ⚠️ **Do not place ZMK combos on naginata edit-shift key pairs (D+F, J+K, C+V,
 M+,) on layer 1.** A position combo fires before the naginata behavior sees
